@@ -38,14 +38,14 @@ class RustBuffer(ctypes.Structure):
 
     @staticmethod
     def alloc(size):
-        return rust_call(_UniFFILib.ffi_scanner_b6c8_rustbuffer_alloc, size)
+        return rust_call(_UniFFILib.ffi_scanner_d0b2_rustbuffer_alloc, size)
 
     @staticmethod
     def reserve(rbuf, additional):
-        return rust_call(_UniFFILib.ffi_scanner_b6c8_rustbuffer_reserve, rbuf, additional)
+        return rust_call(_UniFFILib.ffi_scanner_d0b2_rustbuffer_reserve, rbuf, additional)
 
     def free(self):
-        return rust_call(_UniFFILib.ffi_scanner_b6c8_rustbuffer_free, self)
+        return rust_call(_UniFFILib.ffi_scanner_d0b2_rustbuffer_free, self)
 
     def __str__(self):
         return "RustBuffer(capacity={}, len={}, data={})".format(
@@ -322,21 +322,16 @@ from pathlib import Path
 
 def loadIndirect():
     if sys.platform == "darwin":
-        libname = "libuniffi_scanner.dylib"
+        libname = "lib/scanner_macos_arm64.dylib"
     elif sys.platform.startswith("win"):
         # As of python3.8, ctypes does not seem to search $PATH when loading DLLs.
         # We could use `os.add_dll_directory` to configure the search path, but
         # it doesn't feel right to mess with application-wide settings. Let's
         # assume that the `.dll` is next to the `.py` file and load by full path.
-       # libname = os.path.join(
-        #    os.path.dirname(__file__),
-        #     "{}.dll",
-    # )
-      libname = "uniffi_scanner.dll"
-
-    # else:
-    #     # Anything else must be an ELF platform - Linux, *BSD, Solaris/illumos
-    #     libname = "lib{}.so"
+        libname = "lib/scanner_windows.dll"
+    else:
+        # Anything else must be an ELF platform - Linux, *BSD, Solaris/illumos
+        libname = "lib{}.so"
 
     lib = libname.format("scanner")
     path = str(Path(__file__).parent / lib)
@@ -346,65 +341,68 @@ def loadIndirect():
 # This is an implementation detail which will be called internally by the public API.
 
 _UniFFILib = loadIndirect()
-_UniFFILib.scanner_b6c8_scan_device.argtypes = (
+_UniFFILib.scanner_d0b2_scan_device.argtypes = (
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.scanner_b6c8_scan_device.restype = RustBuffer
-_UniFFILib.scanner_b6c8_connect_device.argtypes = (
+_UniFFILib.scanner_d0b2_scan_device.restype = RustBuffer
+_UniFFILib.scanner_d0b2_connect_device.argtypes = (
     RustBuffer,
-    ctypes.POINTER(RustCallStatus),
-)
-_UniFFILib.scanner_b6c8_connect_device.restype = RustBuffer
-_UniFFILib.scanner_b6c8_disconnect_device.argtypes = (
-    RustBuffer,
-    ctypes.POINTER(RustCallStatus),
-)
-_UniFFILib.scanner_b6c8_disconnect_device.restype = RustBuffer
-_UniFFILib.scanner_b6c8_get_device_basic_properties.argtypes = (
-    RustBuffer,
-    RustBuffer,
-    ctypes.POINTER(RustCallStatus),
-)
-_UniFFILib.scanner_b6c8_get_device_basic_properties.restype = RustBuffer
-_UniFFILib.scanner_b6c8_get_properties_info.argtypes = (
-    RustBuffer,
-    RustBuffer,
-    ctypes.POINTER(RustCallStatus),
-)
-_UniFFILib.scanner_b6c8_get_properties_info.restype = RustBuffer
-_UniFFILib.scanner_b6c8_edit_properties_info.argtypes = (
     RustBuffer,
     RustBuffer,
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.scanner_b6c8_edit_properties_info.restype = RustBuffer
-_UniFFILib.scanner_b6c8_get_barcode_properties.argtypes = (
+_UniFFILib.scanner_d0b2_connect_device.restype = RustBuffer
+_UniFFILib.scanner_d0b2_disconnect_device.argtypes = (
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.scanner_b6c8_get_barcode_properties.restype = RustBuffer
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_alloc.argtypes = (
+_UniFFILib.scanner_d0b2_disconnect_device.restype = RustBuffer
+_UniFFILib.scanner_d0b2_get_device_basic_properties.argtypes = (
+    RustBuffer,
+    RustBuffer,
+    ctypes.POINTER(RustCallStatus),
+)
+_UniFFILib.scanner_d0b2_get_device_basic_properties.restype = RustBuffer
+_UniFFILib.scanner_d0b2_get_properties_info.argtypes = (
+    RustBuffer,
+    RustBuffer,
+    ctypes.POINTER(RustCallStatus),
+)
+_UniFFILib.scanner_d0b2_get_properties_info.restype = RustBuffer
+_UniFFILib.scanner_d0b2_edit_properties_info.argtypes = (
+    RustBuffer,
+    RustBuffer,
+    RustBuffer,
+    ctypes.POINTER(RustCallStatus),
+)
+_UniFFILib.scanner_d0b2_edit_properties_info.restype = RustBuffer
+_UniFFILib.scanner_d0b2_get_barcode_properties.argtypes = (
+    RustBuffer,
+    ctypes.POINTER(RustCallStatus),
+)
+_UniFFILib.scanner_d0b2_get_barcode_properties.restype = RustBuffer
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_alloc.argtypes = (
     ctypes.c_int32,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_alloc.restype = RustBuffer
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_from_bytes.argtypes = (
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_alloc.restype = RustBuffer
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_from_bytes.argtypes = (
     ForeignBytes,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_from_bytes.restype = RustBuffer
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_free.argtypes = (
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_from_bytes.restype = RustBuffer
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_free.argtypes = (
     RustBuffer,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_free.restype = None
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_reserve.argtypes = (
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_free.restype = None
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_reserve.argtypes = (
     RustBuffer,
     ctypes.c_int32,
     ctypes.POINTER(RustCallStatus),
 )
-_UniFFILib.ffi_scanner_b6c8_rustbuffer_reserve.restype = RustBuffer
+_UniFFILib.ffi_scanner_d0b2_rustbuffer_reserve.restype = RustBuffer
 
 # Public interface members begin here.
 
@@ -436,67 +434,76 @@ class FfiConverterString:
             return builder.finalize()
 
 def scan_device():
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_scan_device,))
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_scan_device,))
 
 
 
-def connect_device(mac_address):
-    mac_address = mac_address
+def connect_device(device_id,app_id,developer_id,app_key):
+    device_id = device_id
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_connect_device,
-        FfiConverterString.lower(mac_address)))
-
-
-
-def disconnect_device(mac_address):
-    mac_address = mac_address
+    app_id = app_id
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_disconnect_device,
-        FfiConverterString.lower(mac_address)))
+    developer_id = developer_id
+    
+    app_key = app_key
+    
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_connect_device,
+        FfiConverterString.lower(device_id),
+        FfiConverterString.lower(app_id),
+        FfiConverterString.lower(developer_id),
+        FfiConverterString.lower(app_key)))
 
 
 
-def get_device_basic_properties(mac_address,property_key):
-    mac_address = mac_address
+def disconnect_device(device_id):
+    device_id = device_id
+    
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_disconnect_device,
+        FfiConverterString.lower(device_id)))
+
+
+
+def get_device_basic_properties(device_id,property_key):
+    device_id = device_id
     
     property_key = property_key
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_get_device_basic_properties,
-        FfiConverterString.lower(mac_address),
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_get_device_basic_properties,
+        FfiConverterString.lower(device_id),
         FfiConverterString.lower(property_key)))
 
 
 
-def get_properties_info(mac_address,property_key):
-    mac_address = mac_address
+def get_properties_info(device_id,property_key):
+    device_id = device_id
     
     property_key = property_key
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_get_properties_info,
-        FfiConverterString.lower(mac_address),
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_get_properties_info,
+        FfiConverterString.lower(device_id),
         FfiConverterString.lower(property_key)))
 
 
 
-def edit_properties_info(mac_address,property_key,data):
-    mac_address = mac_address
+def edit_properties_info(device_id,property_key,data):
+    device_id = device_id
     
     property_key = property_key
     
     data = data
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_edit_properties_info,
-        FfiConverterString.lower(mac_address),
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_edit_properties_info,
+        FfiConverterString.lower(device_id),
         FfiConverterString.lower(property_key),
         FfiConverterString.lower(data)))
 
 
 
-def get_barcode_properties(mac_address):
-    mac_address = mac_address
+def get_barcode_properties(device_id):
+    device_id = device_id
     
-    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_b6c8_get_barcode_properties,
-        FfiConverterString.lower(mac_address)))
+    return FfiConverterString.lift(rust_call(_UniFFILib.scanner_d0b2_get_barcode_properties,
+        FfiConverterString.lower(device_id)))
 
 
 
@@ -511,8 +518,7 @@ __all__ = [
     "get_barcode_properties",
 ]
 
-
 if __name__ == '__main__':
     print(scan_device())
-    print(connect_device("7B:AA:8C:98:10:71"))
-    print(get_properties_info("7B:AA:8C:98:10:71","cache"))
+    print(connect_device("F7:7C:4A:1F:FB:3E","com.inateck.scanner","693be162686a","SrwG8UsCC6Fp7OSCDfckFHtfnNF8MRg9CmIvDgHXoFNFRsm3uiQviNtkyOfc//+m2ZpZ32uK3Z5g83optZwpZUFlnmX9DdyvYaaOqzIUJvruixZ3AfKmA/jYKxhbAhjvMLgoW+tHyPnARkJRAMMRULnayq4BLFXm47WGxVVQFXg="))
+    print(get_properties_info("F7:7C:4A:1F:FB:3E","cache"))
