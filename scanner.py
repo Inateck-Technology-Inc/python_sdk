@@ -520,5 +520,5 @@ __all__ = [
 
 if __name__ == '__main__':
     print(scan_device())
-    print(connect_device("F7:7C:4A:1F:FB:3E","com.inateck.scanner","693be162686a","SrwG8UsCC6Fp7OSCDfckFHtfnNF8MRg9CmIvDgHXoFNFRsm3uiQviNtkyOfc//+m2ZpZ32uK3Z5g83optZwpZUFlnmX9DdyvYaaOqzIUJvruixZ3AfKmA/jYKxhbAhjvMLgoW+tHyPnARkJRAMMRULnayq4BLFXm47WGxVVQFXg="))
+    print(connect_device("F7:7C:4A:1F:FB:3E","com.inateck.scanner","***","***"))
     print(get_properties_info("F7:7C:4A:1F:FB:3E","cache"))
