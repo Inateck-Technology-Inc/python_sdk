@@ -9,5 +9,5 @@ To use a library in your project, there are generally the following steps:
 4. Call the API in the "scanner.py" file.
 
 ## Documentation
-For more information about the SDK and APIs, go to [https://****](https://****) .
+For more information about the SDK and APIs, go to [http://docs.inateckoffice.com/web/#/8/24](http://docs.inateckoffice.com/web/#/8/24) .
 
