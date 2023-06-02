@@ -18,8 +18,8 @@ def loadIndirect():
 
 _Lib = loadIndirect()
 
-def callback(result):
-    print("Received result: {}".format(result.decode()))
+def callback(data):
+    print("Received data:", data.decode())
 
 def scan():
     scan_func = _Lib.scan
@@ -27,12 +27,15 @@ def scan():
     scan_func.restype = ctypes.c_char_p
     return scan_func()
 
+callback_type = ctypes.CFUNCTYPE(None, ctypes.c_char_p)
+my_callback_ptr = callback_type(callback)
+
 def connect(device_id,app_id,developer_id,app_key):
     connect_func = _Lib.connect
     connect_func.argtypes = [ctypes.c_char_p,ctypes.c_char_p,ctypes.c_char_p,ctypes.c_char_p,ctypes.c_void_p]
     connect_func.restype = ctypes.c_char_p
-    null_pointer = ctypes.c_void_p()
-    return connect_func(device_id,app_id,developer_id,app_key,null_pointer)
+    #null_pointer = ctypes.c_void_p()
+    return connect_func(device_id,app_id,developer_id,app_key,my_callback_ptr)
 
 def disconnect(device_id):
     disconnect_func = _Lib.disconnect
@@ -72,5 +75,5 @@ if __name__ == '__main__':
     print(edit_properties_info_by_key(b"7B:AA:8C:98:10:71",b"GS1-128",b"1"))
     print(get_basic_properties(b"7B:AA:8C:98:10:71",b"firmware_version"))
     print(get_all_barcode_properties(b"7B:AA:8C:98:10:71"))
-    time.sleep(3)
+    time.sleep(10)
     print(disconnect(b"7B:AA:8C:98:10:71"))
