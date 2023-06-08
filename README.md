@@ -1,5 +1,5 @@
 # BARCODE SCANNER SDK FOR PYTHON
-The SDK provides developers with a set of tools to set the scanner for Windows,macOS and linux platforms. 
+The SDK provides developers with a set of tools to set the scanner for windows,macOS and linux platforms. 
 
 ## Configuration
 To use a library in your project, there are generally the following steps:
