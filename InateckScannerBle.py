@@ -14,8 +14,8 @@ class InateckScannerBle:
 
     def registerEvent(self, callback):
         CallbackType = CFUNCTYPE(None, c_char_p)
-        self.callback = CallbackType(callback)
-        status = self.lib.inateck_scanner_ble_init(self.callback)
+        self.eventCallback = CallbackType(callback)
+        status = self.lib.inateck_scanner_ble_init(self.eventCallback)
         return status
     
     def destroy(self):
@@ -36,11 +36,13 @@ class InateckScannerBle:
         char_ptr = get_devices()
         return char_ptr.decode('utf-8')
     
-    def connect(self, mac):
+    def connect(self, mac, callback):
         mac = c_char_p(bytes(mac, 'utf-8'))
+        CallbackType = CFUNCTYPE(None, c_char_p)
+        self.connectCallback = CallbackType(callback)
         connect = self.lib.inateck_scanner_ble_connect
         connect.restype = c_char_p
-        char_ptr = connect(mac)
+        char_ptr = connect(mac, self.connectCallback)
         return char_ptr.decode('utf-8')
     
     def auth(self, mac):

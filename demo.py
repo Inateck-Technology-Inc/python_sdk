@@ -3,9 +3,12 @@ from time import sleep
 from InateckScannerBle import InateckScannerBle
 
 def scan_callback(mac):
-    # mac = c_char_p(mac).value
     mac = mac.decode('utf-8')
     print("mac: %s" % (mac))
+
+def code_callback(code):
+    code = code.decode('utf-8')
+    print("code: %s" % (code))
 
 
 if __name__ == '__main__':
@@ -16,9 +19,7 @@ if __name__ == '__main__':
         exit(1)
     print("init success")
     print("you can input command: > scan, > stop, > devices, > connect, > disconnect, > version, > battery, > software, > settingInfo, > closeVolume, > openVolume, > destroy")
-    # 死循环
     while True:
-        # 获取输入
         input_str = input("")
         cmd = input_str.split(' ')
         start = cmd[0]
@@ -43,7 +44,7 @@ if __name__ == '__main__':
             if mac == None:
                 print("Invalid command, example: > connect fb556f1d-f919-2d4d-c98c-fcbe246af2e4")
                 continue
-            device = inateck.connect(mac)
+            device = inateck.connect(mac, code_callback)
             inateck.auth(mac)
             print("device: %s" % (device))
         elif method == 'disconnect':
