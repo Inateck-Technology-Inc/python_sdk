@@ -16,9 +16,9 @@
 | ------- | ------- | ------- |
 | Swift | &#x2705; | https://github.com/Inateck-Technology-Inc/ios_sdk |
 | Kotlin | &#x2705; | https://github.com/Inateck-Technology-Inc/android_sdk |
-| Java | &#x2705; | [Java](./java_info.md) |
-| C# | &#x2705; | [C#](./csharp_info.md) |
-| C++ | &#x2705; | [C++](./cpp_info.md) |
+| Java | &#x2705; | https://github.com/Inateck-Technology-Inc/java_sdk |
+| C# | &#x2705; | https://github.com/Inateck-Technology-Inc/csharp_sdk |
+| C++ | &#x2705; | https://github.com/Inateck-Technology-Inc/cpp_sdk |
 | Python | &#x2705; | https://github.com/Inateck-Technology-Inc/python_sdk |
 | C | &#x2705; | https://github.com/Inateck-Technology-Inc/cpp_sdk |
 
