@@ -26,7 +26,8 @@
 1. Copy the corresponding `libscanner_ble` library file for your operating system platform to your project.
 2. Run the demo.
 
-## 普通API  
+
+## General API  
 
 Initialize the SDK, `callback` is the callback for device connection status.
 
@@ -60,7 +61,7 @@ connect(`mac`, `callback`)
 
 <br>
 
-断开设备，`mac` 为设备的唯一标识
+Disconnect the device, `mac` is the unique identifier of the device.
 
 ```python
 disconnect(`mac`)
