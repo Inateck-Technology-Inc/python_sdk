@@ -1,5 +1,25 @@
 from ctypes import *
+from enum import Enum
 import platform
+
+class DeviceType(Enum):
+    NONE = 0
+    Pro8 = 1
+    ST45 = 2
+    ST23 = 3
+    ST91 = 4
+    ST42 = 5
+    ST54 = 6
+    ST55 = 7
+    ST73 = 8
+    ST75 = 9
+    ST43 = 10
+    P7 = 11
+    ST21 = 12
+    ST60 = 13
+    ST70 = 14
+    P6 = 15
+    ST35 = 16
 
 class InateckScannerBle:
     def __init__(self):
@@ -76,19 +96,28 @@ class InateckScannerBle:
         char_ptr = get_software_version(mac)
         return char_ptr.decode('utf-8')
     
-    def getSettingInfo(self, mac):
+    def beeOrShake(self, mac):
         mac = c_char_p(bytes(mac, 'utf-8'))
-        get_setting_info = self.lib.inateck_scanner_ble_get_setting_info
-        get_setting_info.restype = c_char_p
-        char_ptr = get_setting_info(mac)
+        bee_or_shake = self.lib.inateck_scanner_ble_bee_or_shake
+        bee_or_shake.restype = c_char_p
+        char_ptr = bee_or_shake(mac)
         return char_ptr.decode('utf-8')
     
-    def setSettingInfo(self, mac, cmd):
+    def getSettingInfo(self, mac, device_type):
+        mac = c_char_p(bytes(mac, 'utf-8'))
+        device_type = c_int(device_type.value)
+        get_setting_info = self.lib.inateck_scanner_ble_get_setting_info
+        get_setting_info.restype = c_char_p
+        char_ptr = get_setting_info(mac, device_type)
+        return char_ptr.decode('utf-8')
+    
+    def setSettingInfo(self, mac, cmd, device_type):
         mac = c_char_p(bytes(mac, 'utf-8'))
         cmd = c_char_p(bytes(cmd, 'utf-8'))
+        device_type = c_int(device_type.value)
         setting_info = self.lib.inateck_scanner_ble_set_setting_info
         setting_info.restype = c_char_p
-        char_ptr = setting_info(mac, cmd)
+        char_ptr = setting_info(mac, cmd, device_type)
         return char_ptr.decode('utf-8')
     
     def setName(self, mac, name):
@@ -99,7 +128,7 @@ class InateckScannerBle:
     
     def setTime(self, mac, time):
         mac = c_char_p(bytes(mac, 'utf-8'))
-        time = c_long = c_long(time)
+        time = c_long(time)
         status = self.lib.inateck_scanner_ble_set_time(mac, time)
         return status
     

@@ -1,224 +1,232 @@
-# Scanner Configuration cmd
+# cmd
 
-## Set scanner volume
+## Set Scanner Volume
 
-| Volume | Value | Status | cmd |
-| ------ | ----- | ------ | --- |
-| Volume | 0 | Mute | `{ "value" : "0","area" : "3","name" : "volume" }` |
-| Volume | 2 | Low | `{ "value" : "2","area" : "3","name" : "volume" }` |
-| Volume | 4 | Medium | `{ "value" : "4","area" : "3","name" : "volume" }` |
-| Volume | 8 | High | `{ "value" : "8","area" : "3","name" : "volume" }` |
-
-<br>
-
-## Set scanner vibration intensity
-
-| Vibration Intensity | Value | Status | cmd |
-| ------------------- | ----- | ------ | --- |
-| Vibration Intensity | 0 | Weak | `{ "value" : "0","area" : "31","name" : "shake_intensity" }` |
-| Vibration Intensity | 1 | Strong | `{ "value" : "1","area" : "31","name" : "shake_intensity" }` |
+| Volume | Status Value | Status | cmd                        |
+| ------ | ------------- | ------ | -------------------------- |
+| Volume | 0             | Mute   | {"flag": 1001, "value": 0} |
+| Volume | 2             | Low    | {"flag": 1001, "value": 2} |
+| Volume | 4             | Medium | {"flag": 1001, "value": 4} |
+| Volume | 8             | High   | {"flag": 1001, "value": 8} |
 
 <br>
 
-## Lighting Lamp Control
+## Set Scanner Vibration Intensity
 
-| Lighting Lamp Control | Value | Status | cmd |
-| --------------------- | ----- | ------ | --- |
-| Lighting Lamp Control | 0 | On during reading | `{ "value" : "0","area" : "28","name" : "lighting_lamp_control" }` |
-| Lighting Lamp Control | 1 | Always on | `{ "value" : "1","area" : "28","name" : "lighting_lamp_control" }` |
-| Lighting Lamp Control | 2 | Always off | `{ "value" : "2","area" : "28","name" : "lighting_lamp_control" }` |
-
-<br>
-
-## Positioning Lamp Control
-
-| Positioning Lamp Control | Value | Status | cmd |
-| ------------------------ | ----- | ------ | --- |
-| Positioning Lamp Control | 0 | On during reading | `{ "value" : "0","area" : "28","name" : "positioning_lamp_control" }` |
-| Positioning Lamp Control | 1 | Always on | `{ "value" : "1","area" : "28","name" : "positioning_lamp_control" }` |
+| Vibration Intensity | Status Value | Status | cmd                        |
+| ------------------- | ------------- | ------ | -------------------------- |
+| Vibration Intensity | 0             | Weak   | {"flag": 1002, "value": 0} |
+| Vibration Intensity | 1             | Strong | {"flag": 1002, "value": 1} |
+| Vibration Intensity | 2             | Off    | {"flag": 1002, "value": 2} |
 
 <br>
 
-## Keyboard Language Setting
+## Illumination Control
 
-| Keyboard Language | Value | Status | cmd |
-| ----------------- | ----- | ------ | --- |
-| Keyboard Language | 1 | US Windows | `{ "value" : "1","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 2 | Italian Windows | `{ "value" : "2","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 3 | German Windows | `{ "value" : "3","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 4 | Spanish Windows | `{ "value" : "4","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 5 | French Windows | `{ "value" : "5","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 6 | UK Windows | `{ "value" : "6","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 7 | Japanese Windows | `{ "value" : "7","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 8 | Canadian Windows | `{ "value" : "8","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 9 | Lithuanian Windows | `{ "value" : "9","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 10 | Srbija Windows | `{ "value" : "10","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 11 | Swedish Windows | `{ "value" : "11","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 12 | Dutch Windows | `{ "value" : "12","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 13 | Danish Windows | `{ "value" : "13","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 14 | Norwegian Windows | `{ "value" : "14","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 16 | Portuguese Windows | `{ "value" : "16","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 17 | Polish Windows | `{ "value" : "17","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 33 | US MAC | `{ "value" : "33","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 34 | Italian MAC | `{ "value" : "34","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 35 | German MAC | `{ "value" : "35","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 36 | Spanish MAC | `{ "value" : "36","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 37 | French MAC | `{ "value" : "37","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 38 | UK MAC | `{ "value" : "38","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 39 | Japanese MAC | `{ "value" : "39","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 40 | Canadian MAC | `{ "value" : "40","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 41 | Lithuanian MAC | `{ "value" : "41","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 42 | Srbija MAC | `{ "value" : "42","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 43 | Swedish MAC | `{ "value" : "43","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 44 | Dutch MAC | `{ "value" : "44","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 45 | Danish MAC | `{ "value" : "45","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 46 | Norwegian MAC | `{ "value" : "46","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 48 | Portuguese MAC | `{ "value" : "48","area" : "33","name" : "country_board" }` |
-| Keyboard Language | 49 | Polish MAC | `{ "value" : "49","area" : "33","name" : "country_board" }` |
+| Illumination Control | Status Value | Status       | cmd                        |
+| -------------------- | ------------- | ------------ | -------------------------- |
+| Illumination Control | 0             | On when reading | {"flag": 1003, "value": 0} |
+| Illumination Control | 1             | Always on    | {"flag": 1003, "value": 1} |
+| Illumination Control | 2             | Always off   | {"flag": 1003, "value": 2} |
 
 <br>
 
-## Scan Mode
+## Aiming Light Control
 
-| Scan Mode | Value | Status | cmd |
-| --------- | ----- | ------ | --- |
-| Scan Mode | 0 | Manual Misread | `{ "value" : "0","area" : "4","name" : "scan_mode" }` |
-| Scan Mode | 1 | Continuous Scan | `{ "value" : "1","area" : "4","name" : "scan_mode" }` |
-| Scan Mode | 2 | Auto Turn Off Red Light | `{ "value" : "2","area" : "4","name" : "scan_mode" }` |
-| Scan Mode | 3 | Hands-Free | `{ "value" : "3","area" : "4","name" : "scan_mode" }` |
+| Aiming Light Control | Status Value | Status       | cmd                        |
+| -------------------- | ------------- | ------------ | -------------------------- |
+| Aiming Light Control | 0             | On when reading | {"flag": 1004, "value": 0} |
+| Aiming Light Control | 1             | Always on    | {"flag": 1004, "value": 1} |
+| Aiming Light Control | 2             | Always off   | {"flag": 1004, "value": 2} |
+
+<br>
+
+## Keyboard Language Settings
+
+| Keyboard Language | Status Value | Status            | cmd                         |
+| ----------------- | ------------- | ----------------- | --------------------------- |
+| Keyboard Language | 1             | US Windows        | {"flag": 1005, "value": 1}  |
+| Keyboard Language | 2             | Italian Windows   | {"flag": 1005, "value": 2}  |
+| Keyboard Language | 3             | German Windows    | {"flag": 1005, "value": 3}  |
+| Keyboard Language | 4             | Spanish Windows   | {"flag": 1005, "value": 4}  |
+| Keyboard Language | 5             | French Windows    | {"flag": 1005, "value": 5}  |
+| Keyboard Language | 6             | UK Windows        | {"flag": 1005, "value": 6}  |
+| Keyboard Language | 7             | Japanese Windows  | {"flag": 1005, "value": 7}  |
+| Keyboard Language | 8             | Canadian Windows  | {"flag": 1005, "value": 8}  |
+| Keyboard Language | 9             | Lithuanian Windows| {"flag": 1005, "value": 9}  |
+| Keyboard Language | 10            | Serbian Windows   | {"flag": 1005, "value": 10} |
+| Keyboard Language | 11            | Swedish Windows   | {"flag": 1005, "value": 11} |
+| Keyboard Language | 12            | Dutch Windows     | {"flag": 1005, "value": 12} |
+| Keyboard Language | 13            | Danish Windows    | {"flag": 1005, "value": 13} |
+| Keyboard Language | 14            | Norwegian Windows | {"flag": 1005, "value": 14} |
+| Keyboard Language | 16            | Portuguese Windows| {"flag": 1005, "value": 16} |
+| Keyboard Language | 17            | Polish Windows    | {"flag": 1005, "value": 17} |
+| Keyboard Language | 33            | US MAC            | {"flag": 1005, "value": 33} |
+| Keyboard Language | 34            | Italian MAC       | {"flag": 1005, "value": 34} |
+| Keyboard Language | 35            | German MAC        | {"flag": 1005, "value": 35} |
+| Keyboard Language | 36            | Spanish MAC       | {"flag": 1005, "value": 36} |
+| Keyboard Language | 37            | French MAC        | {"flag": 1005, "value": 37} |
+| Keyboard Language | 38            | UK MAC            | {"flag": 1005, "value": 38} |
+| Keyboard Language | 39            | Japanese MAC      | {"flag": 1005, "value": 39} |
+| Keyboard Language | 40            | Canadian MAC      | {"flag": 1005, "value": 40} |
+| Keyboard Language | 41            | Lithuanian MAC    | {"flag": 1005, "value": 41} |
+| Keyboard Language | 42            | Serbian MAC       | {"flag": 1005, "value": 42} |
+| Keyboard Language | 43            | Swedish MAC       | {"flag": 1005, "value": 43} |
+| Keyboard Language | 44            | Dutch MAC         | {"flag": 1005, "value": 44} |
+| Keyboard Language | 45            | Danish MAC        | {"flag": 1005, "value": 45} |
+| Keyboard Language | 46            | Norwegian MAC     | {"flag": 1005, "value": 46} |
+| Keyboard Language | 48            | Portuguese MAC    | {"flag": 1005, "value": 48} |
+| Keyboard Language | 49            | Polish MAC        | {"flag": 1005, "value": 49} |
+
+<br>
+
+## Scanning Mode
+
+| Scanning Mode | Status Value | Status         | cmd                        |
+| ------------- | ------------- | -------------- | -------------------------- |
+| Scanning Mode | 1             | Continuous Scan| {"flag": 1006, "value": 1} |
+| Scanning Mode | 2             | Auto Close Red Light | {"flag": 1006, "value": 2} |
+| Scanning Mode | 3             | Auto Sensing   | {"flag": 1006, "value": 3} |
+| Scanning Mode | 5             | Hands-Free     | {"flag": 1006, "value": 5} |
 
 <br>
 
 ## Bluetooth Mode
 
-| Bluetooth Mode | Value | Status | cmd |
-| -------------- | ----- | ------ | --- |
-| Bluetooth Mode | 0 | HID Mode | `{ "value" : "0","area" : "1","name" : "bt_mode_low" }`<br>`{ "value" : "0","area" : "31","name" : "bt_mode_high" }` |
-| Bluetooth Mode | 1 | SPP Mode | `{ "value" : "1","area" : "1","name" : "bt_mode_low" }`<br>`{ "value" : "0","area" : "31","name" : "bt_mode_high" }` |
-| Bluetooth Mode | 2 | GATT Mode | `{ "value" : "0","area" : "1","name" : "bt_mode_low" }`<br>`{ "value" : "1","area" : "31","name" : "bt_mode_high" }` |
-| Bluetooth Mode | 3 | Bluetooth Receiver Mode | `{ "value" : "1","area" : "1","name" : "bt_mode_low" }`<br>`{ "value" : "1","area" : "31","name" : "bt_mode_high" }` |
+| Bluetooth Mode | Status Value | Status              | cmd                        |
+| -------------- | ------------- | ------------------- | -------------------------- |
+| Bluetooth Mode | 0             | HID Mode            | {"flag": 1007, "value": 0} |
+| Bluetooth Mode | 1             | SPP Mode            | {"flag": 1007, "value": 1} |
+| Bluetooth Mode | 2             | GATT Mode           | {"flag": 1007, "value": 2} |
+| Bluetooth Mode | 3             | Bluetooth Receiver Mode | {"flag": 1007, "value": 3} |
 
 <br>
 
 ## Case Conversion
 
-| Case Conversion | Value | Status | cmd |
-| --------------- | ----- | ------ | --- |
-| Case Conversion | 0 | No Conversion | `{ "value" : "0","area" : "36","name" : "letter_case" }` |
-| Case Conversion | 1 | Lowercase | `{ "value" : "1","area" : "36","name" : "letter_case" }` |
+| Case Conversion | Status Value | Status     | cmd                        |
+| --------------- | ------------- | ---------- | -------------------------- |
+| Case Conversion | 0             | No Conversion | {"flag": 1008, "value": 0} |
+| Case Conversion | 1             | All Lowercase | {"flag": 1008, "value": 1} |
+| Case Conversion | 2             | All Uppercase | {"flag": 1008, "value": 2} |
 
 <br>
 
 ## Barcode Output Date
 
-| Barcode Output Date | Value | Status | cmd |
-| ------------------ | ----- | ------ | --- |
-| Barcode Output Date | 0 | Off | `{ "value" : "0","area" : "31","name" : "output_date" }` |
-| Barcode Output Date | 1 | On | `{ "value" : "1","area" : "31","name" : "output_date" }` |
+| Barcode Output Date | Status Value | Status | cmd                        |
+| ------------------- | ------------- | ------ | -------------------------- |
+| Barcode Output Date | 0             | Off    | {"flag": 1009, "value": 0} |
+| Barcode Output Date | 1             | On     | {"flag": 1009, "value": 1} |
+
+<br>
 
 ## Barcode Output Time
 
-| Barcode Output Time | Value | Status | cmd |
-| ------------------ | ----- | ------ | --- |
-| Barcode Output Time | 0 | Off | `{ "value" : "0","area" : "31","name" : "output_time" }` |
-| Barcode Output Time | 1 | On | `{ "value" : "1","area" : "31","name" : "output_time" }` |
+| Barcode Output Time | Status Value | Status | cmd                        |
+| ------------------- | ------------- | ------ | -------------------------- |
+| Barcode Output Time | 0             | Off    | {"flag": 1010, "value": 0} |
+| Barcode Output Time | 1             | On     | {"flag": 1010, "value": 1} |
 
 <br>
 
 ## Suffix
 
-| Suffix | Value | Status | cmd |
-| ------ | ----- | ------ | --- |
-| Suffix | 0 | Tab | `{ "value" : "1","area" : "34","name" : "subfix_add_tab" }`<br>`{ "value" : "0","area" : "15","name" : "suffix_add_enter" }` |
-| Suffix | 1 | Enter | `{ "value" : "0","area" : "34","name" : "subfix_add_tab" }`<br>`{ "value" : "1","area" : "15","name" : "suffix_add_enter" }` |
+| Suffix | Status Value | Status | cmd                        |
+| ------ | ------------- | ------ | -------------------------- |
+| Suffix | 0             | Tab    | {"flag": 1011, "value": 0} |
+| Suffix | 1             | Enter  | {"flag": 1011, "value": 1} |
+| Suffix | 2             | No Suffix | {"flag": 1011, "value": 2} |
 
 <br>
 
 ## Auto Sleep
 
-| Auto Sleep | Value | Status | cmd |
-| ---------- | ----- | ------ | --- |
-| Auto Sleep | 0 | Off | `{ "value" : "0","area" : "1","name" : "auto_off" }` |
-| Auto Sleep | 1 | On | `{ "value" : "1","area" : "1","name" : "auto_off" }` |
+| Auto Sleep | Status Value | Status | cmd                        |
+| ---------- | ------------- | ------ | -------------------------- |
+| Auto Sleep | 0             | Off    | {"flag": 1012, "value": 0} |
+| Auto Sleep | 1             | On     | {"flag": 1012, "value": 1} |
 
 <br>
 
 ## Inventory Mode
 
-| Inventory Mode | Value | Status | cmd |
-| -------------- | ----- | ------ | --- |
-| Inventory Mode | 0 | Off | `{ "value" : "0","area" : "34","name" : "inventory_mode" }` |
-| Inventory Mode | 1 | On | `{ "value" : "1","area" : "34","name" : "inventory_mode" }` |
+| Inventory Mode | Status Value | Status | cmd                        |
+| -------------- | ------------- | ------ | -------------------------- |
+| Inventory Mode | 0             | Off    | {"flag": 1013, "value": 0} |
+| Inventory Mode | 1             | On     | {"flag": 1013, "value": 1} |
 
 <br>
 
 ## Double Click Upload
 
-| Double Click Upload | Value | Status | cmd |
-| ------------------ | ----- | ------ | --- |
-| Double Click Upload | 0 | Off | `{ "value" : "0","area" : "25","name" : "dclick_upload_flag" }` |
-| Double Click Upload | 1 | On | `{ "value" : "1","area" : "25","name" : "dclick_upload_flag" }` |
+| Double Click Upload | Status Value | Status | cmd                        |
+| ------------------- | ------------- | ------ | -------------------------- |
+| Double Click Upload | 0             | Off    | {"flag": 1014, "value": 0} |
+| Double Click Upload | 1             | On     | {"flag": 1014, "value": 1} |
 
 <br>
 
 ## Barcode Settings
 
-| Barcode Settings | Value | Status | cmd |
-| ---------------- | ----- | ------ | --- |
-| Codabar | 1 | On | `{ "value" : "1","area" : "11","name" : "codabar_on" }` |
-| Codabar | 0 | Off | `{ "value" : "0","area" : "11","name" : "codabar_on" }` |
-| IATA25 | 1 | On | `{ "value" : "1","area" : "11","name" : "iata25_on" }` |
-| IATA25 | 0 | Off | `{ "value" : "0","area" : "11","name" : "iata25_on" }` |
-| Interleaved25 | 1 | On | `{ "value" : "1","area" : "11","name" : "interleaved25_on" }` |
-| Interleaved25 | 0 | Off | `{ "value" : "0","area" : "11","name" : "interleaved25_on" }` |
-| Matrix25 | 1 | On | `{ "value" : "1","area" : "11","name" : "matrix25_on" }` |
-| Matrix25 | 0 | Off | `{ "value" : "0","area" : "11","name" : "matrix25_on" }` |
-| Standard25 | 1 | On | `{ "value" : "1","area" : "11","name" : "standard25_on" }` |
-| Standard25 | 0 | Off | `{ "value" : "0","area" : "11","name" : "standard25_on" }` |
-| Code39 | 1 | On | `{ "value" : "1","area" : "11","name" : "code39_on" }` |
-| Code39 | 0 | Off | `{ "value" : "0","area" : "11","name" : "code39_on" }` |
-| Code93 | 1 | On | `{ "value" : "1","area" : "11","name" : "code93_on" }` |
-| Code93 | 0 | Off | `{ "value" : "0","area" : "11","name" : "code93_on" }` |
-| Code128 | 1 | On | `{ "value" : "1","area" : "11","name" : "code128_on" }` |
-| Code128 | 0 | Off | `{ "value" : "0","area" : "11","name" : "code128_on" }` |
-| EAN-8 | 1 | On | `{ "value" : "1","area" : "12","name" : "ean_8_on" }` |
-| EAN-8 | 0 | Off | `{ "value" : "0","area" : "12","name" : "ean_8_on" }` |
-| EAN-13 | 1 | On | `{ "value" : "1","area" : "12","name" : "ean_13_on" }` |
-| EAN-13 | 0 | Off | `{ "value" : "0","area" : "12","name" : "ean_13_on" }` |
-| UPC-A | 1 | On | `{ "value" : "1","area" : "12","name" : "upc_a_on" }` |
-| UPC-A | 0 | Off | `{ "value" : "0","area" : "12","name" : "upc_a_on" }` |
-| UPC-E0 | 1 | On | `{ "value" : "1","area" : "12","name" : "upc_e0_on" }` |
-| UPC-E0 | 0 | Off | `{ "value" : "0","area" : "12","name" : "upc_e0_on" }` |
-| MSI | 1 | On | `{ "value" : "1","area" : "12","name" : "msi_on" }` |
-| MSI | 0 | Off | `{ "value" : "0","area" : "12","name" : "msi_on" }` |
-| Code11 | 1 | On | `{ "value" : "1","area" : "12","name" : "code11_on" }` |
-| Code11 | 0 | Off | `{ "value" : "0","area" : "12","name" : "code11_on" }` |
-| Chinese Post | 1 | On | `{ "value" : "1","area" : "12","name" : "chinese_post_on" }` |
-| Chinese Post | 0 | Off | `{ "value" : "0","area" : "12","name" : "chinese_post_on" }` |
-| UPC-E0 Code | 0 | Off | `{ "value" : "0","area" : "12","name" : "upc_e0_on" }` |
-| MSI Code | 1 | On | `{ "value" : "1","area" : "12","name" : "msi_on" }` |
-| MSI Code | 0 | Off | `{ "value" : "0","area" : "12","name" : "msi_on" }` |
-| Code11 Code | 1 | On | `{ "value" : "1","area" : "12","name" : "code11_on" }` |
-| Code11 Code | 0 | Off | `{ "value" : "0","area" : "12","name" : "code11_on" }` |
-| Chinese Post Code | 1 | On | `{ "value" : "1","area" : "12","name" : "chinese_post_on" }` |
-| Chinese Post Code | 0 | Off | `{ "value" : "0","area" : "12","name" : "chinese_post_on" }` |
-| UPC-E1 Code | 1 | On | `{ "value" : "1","area" : "12","name" : "upc_e1_on" }` |
-| UPC-E1 Code | 0 | Off | `{ "value" : "0","area" : "12","name" : "upc_e1_on" }` |
-| USPS/FedEx Code | 1 | On | `{ "value" : "1","area" : "15","name" : "usps_fedex" }` |
-| USPS/FedEx Code | 0 | Off | `{ "value" : "0","area" : "15","name" : "usps_fedex" }` |
-| Aztec Code | 1 | On | `{ "value" : "1","area" : "25","name" : "aztec_on" }` |
-| Aztec Code | 0 | Off | `{ "value" : "0","area" : "25","name" : "aztec_on" }` |
-| MaxiCode Code | 1 | On | `{ "value" : "1","area" : "25","name" : "maxicode_on" }` |
-| MaxiCode Code | 0 | Off | `{ "value" : "0","area" : "25","name" : "maxicode_on" }` |
-| Hanxin Code | 1 | On | `{ "value" : "1","area" : "26","name" : "hanxin_on" }` |
-| Hanxin Code | 0 | Off | `{ "value" : "0","area" : "26","name" : "hanxin_on" }` |
-| DataMatrix | 1 | On | `{ "value" : "1","area" : "27","name" : "datamatrix_on" }` |
-| DataMatrix | 0 | Off | `{ "value" : "0","area" : "27","name" : "datamatrix_on" }` |
-| QRCode | 1 | On | `{ "value" : "1","area" : "28","name" : "qrcode_on" }` |
-| QRCode | 0 | Off | `{ "value" : "0","area" : "28","name" : "qrcode_on" }` |
-| PDF417 | 1 | On | `{ "value" : "1","area" : "29","name" : "pdf417_on" }` |
-| PDF417 | 0 | Off | `{ "value" : "0","area" : "29","name" : "pdf417_on" }` |
-| GS1-128 | 1 | On | `{ "value" : "1","area" : "32","name" : "gs1_128" }` |
-| GS1-128 | 0 | Off | `{ "value" : "0","area" : "32","name" : "gs1_128" }` |
+| Barcode Settings | Status Value | Status | cmd                        |
+| ---------------- | ------------- | ------ | -------------------------- |
+| Codabar          | 1             | On     | {"flag": 2001, "value": 1} |
+| Codabar          | 0             | Off    | {"flag": 2001, "value": 0} |
+| IATA25           | 1             | On     | {"flag": 2002, "value": 1} |
+| IATA25           | 0             | Off    | {"flag": 2002, "value": 0} |
+| Interleaved 25   | 1             | On     | {"flag": 2003, "value": 1} |
+| Interleaved 25   | 0             | Off    | {"flag": 2003, "value": 0} |
+| Matrix 25        | 1             | On     | {"flag": 2004, "value": 1} |
+| Matrix 25        | 0             | Off    | {"flag": 2004, "value": 0} |
+| Standard 25      | 1             | On     | {"flag": 2005, "value": 1} |
+| Standard 25      | 0             | Off    | {"flag": 2005, "value": 0} |
+| Code39           | 1             | On     | {"flag": 2006, "value": 1} |
+| Code39           | 0             | Off    | {"flag": 2006, "value": 0} |
+| Code93           | 1             | On     | {"flag": 2007, "value": 1} |
+| Code93           | 0             | Off    | {"flag": 2007, "value": 0} |
+| Code128          | 1             | On     | {"flag": 2008, "value": 1} |
+| Code128          | 0             | Off    | {"flag": 2008, "value": 0} |
+| EAN-8            | 1             | On     | {"flag": 2009, "value": 1} |
+| EAN-8            | 0             | Off    | {"flag": 2009, "value": 0} |
+| EAN-13           | 1             | On     | {"flag": 2010, "value": 1} |
+| EAN-13           | 0             | Off    | {"flag": 2010, "value": 0} |
+| UPC-A            | 1             | On     | {"flag": 2011, "value": 1} |
+| UPC-A            | 0             | Off    | {"flag": 2011, "value": 0} |
+| UPC-E0           | 1             | On     | {"flag": 2012, "value": 1} |
+| UPC-E0           | 0             | Off    | {"flag": 2012, "value": 0} |
+| MSI              | 1             | On     | {"flag": 2013, "value": 1} |
+| MSI              | 0             | Off    | {"flag": 2013, "value": 0} |
+| Code11           | 1             | On     | {"flag": 2014, "value": 1} |
+| Code11           | 0             | Off    | {"flag": 2014, "value": 0} |
+| China Post       | 1             | On     | {"flag": 2015, "value": 1} |
+| China Post       | 0             | Off    | {"flag": 2015, "value": 0} |
+| UPC-E1           | 1             | On     | {"flag": 2016, "value": 1} |
+| UPC-E1           | 0             | Off    | {"flag": 2016, "value": 0} |
+| USPS/FedEx       | 1             | On     | {"flag": 2017, "value": 1} |
+| USPS/FedEx       | 0             | Off    | {"flag": 2017, "value": 0} |
+| Aztec            | 1             | On     | {"flag": 2018, "value": 1} |
+| Aztec            | 0             | Off    | {"flag": 2018, "value": 0} |
+| MaxiCode         | 1             | On     | {"flag": 2019, "value": 1} |
+| MaxiCode         | 0             | Off    | {"flag": 2019, "value": 0} |
+| Han Xin          | 1             | On     | {"flag": 2020, "value": 1} |
+| Han Xin          | 0             | Off    | {"flag": 2020, "value": 0} |
+| DataMatrix       | 1             | On     | {"flag": 2021, "value": 1} |
+| DataMatrix       | 0             | Off    | {"flag": 2021, "value": 0} |
+| QRCode           | 1             | On     | {"flag": 2022, "value": 1} |
+| QRCode           | 0             | Off    | {"flag": 2022, "value": 0} |
+| PDF417           | 1             | On     | {"flag": 2023, "value": 1} |
+| PDF417           | 0             | Off    | {"flag": 2023, "value": 0} |
+| GS1-128          | 1             | On     | {"flag": 2024, "value": 1} |
+| GS1-128          | 0             | Off    | {"flag": 2024, "value": 0} |
+| RSS14 Composite  | 1             | On     | {"flag": 2025, "value": 1} |
+| RSS14 Composite  | 0             | Off    | {"flag": 2025, "value": 0} |
+| Plessey          | 1             | On     | {"flag": 2026, "value": 1} |
+| Plessey          | 0             | Off    | {"flag": 2026, "value": 0} |
+| Telepen          | 1             | On     | {"flag": 2027, "value": 1} |
+| Telepen          | 0             | Off    | {"flag": 2027, "value": 0} |
+| RSS-14           | 1             | On     | {"flag": 2028, "value": 1} |
+| RSS-14           | 0             | Off    | {"flag": 2028, "value": 0} |
 
 <br>
+

@@ -53,7 +53,7 @@ stopScan()
 
 <br>
 
-Connect to a device, `mac` is the unique identifier of the device, `callback` is the callback for scanning content when connecting to the device.
+Connect the device, `mac` is the unique identifier of the device, `callback` is the callback for scanning content of the connected device. The scanning content is encoded in UTF-8. If the scanning content is not encoded in UTF-8, it needs to be converted manually. For custom encoding, refer to the [documentation](./code.md).
 
 ```python
 connect(`mac`, `callback`)
