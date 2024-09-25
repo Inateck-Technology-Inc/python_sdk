@@ -53,7 +53,7 @@ stopScan()
 
 <br>
 
-连接设备，`mac` 为设备的唯一标识, `callback` 为连接设备扫码内容的回调
+连接设备，`mac` 为设备的唯一标识, `callback` 为连接设备扫码内容的回调。扫码内容为UTF-8编码，如果扫码内容为非UTF-8编码，需要自行转换，自定义编码参考[文档](./code.md)
 
 ```python
 connect(`mac`, `callback`)

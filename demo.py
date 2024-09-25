@@ -1,6 +1,6 @@
 
 from time import sleep
-from InateckScannerBle import InateckScannerBle
+from InateckScannerBle import InateckScannerBle, DeviceType
 
 def scan_callback(mac):
     mac = mac.decode('utf-8')
@@ -18,6 +18,7 @@ if __name__ == '__main__':
         print("init failed: %d" % (status))
         exit(1)
     print("init success")
+    print("version: %s" % (inateck.sdkVersion()))
     print("you can input command: > scan, > stop, > devices, > connect, > disconnect, > version, > battery, > software, > settingInfo, > closeVolume, > openVolume, > destroy")
     while True:
         input_str = input("")
@@ -87,16 +88,18 @@ if __name__ == '__main__':
             if mac == None:
                 print("Invalid command, example: > closeVolume fb556f1d-f919-2d4d-c98c-fcbe246af2e4")
                 continue
-            closeVolume = '[{"area":"3","value":"0","name":"volume"}]'
-            status = inateck.setSettingInfo(mac, closeVolume)
+            closeVolume = '[{"flag":1001,"value":0}]'
+            status = inateck.setSettingInfo(mac, closeVolume, DeviceType.ST75)
+            inateck.beeOrShake(mac)
             print("settingInfo: %s" % (status))
         elif method == 'openVolume':
             mac = cmd[2]
             if mac == None:
                 print("Invalid command, example: > closeVolume fb556f1d-f919-2d4d-c98c-fcbe246af2e4")
                 continue
-            closeVolume = '[{"area":"3","value":"4","name":"volume"}]'
-            status = inateck.setSettingInfo(mac, closeVolume)
+            closeVolume = '[{"flag":1001,"value":4}]'
+            status = inateck.setSettingInfo(mac, closeVolume, DeviceType.ST75)
+            inateck.beeOrShake(mac)
             print("settingInfo: %s" % (status))
         elif method == 'destroy':
             inateck.destroy()
