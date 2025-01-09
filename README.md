@@ -1,4 +1,8 @@
-# Inateck Scanner SDK
+# [Inateck Scanner SDK](https://docs.inateck.com/scanner-sdk-en/)
+
+The Inateck Scanner Software Development Kit (SDK) provides the perfect solution for integrating our scanners into your company's applications and systems. It can seamlessly capture data and control scanner functions. By using the Inateck SDK, applications can efficiently collect data and utilize it within the application to improve operational efficiency and your company's productivity.
+
+[Documentation](https://docs.inateck.com/scanner-sdk-en/).
 
 ## Supported Platforms
 
@@ -10,181 +14,26 @@
 | Linux | &#x2705; |
 | Mac | &#x2705; |
 
-## Supported Languages
-   
-| Language | Support | Link |
-| ------- | ------- | ------- |
-| Swift | &#x2705; | https://github.com/Inateck-Technology-Inc/ios_sdk |
-| Kotlin | &#x2705; | https://github.com/Inateck-Technology-Inc/android_sdk |
-| Java | &#x2705; | https://github.com/Inateck-Technology-Inc/java_sdk |
-| C# | &#x2705; | https://github.com/Inateck-Technology-Inc/csharp_sdk |
-| C++ | &#x2705; | https://github.com/Inateck-Technology-Inc/cpp_sdk |
-| Python | &#x2705; | https://github.com/Inateck-Technology-Inc/python_sdk |
-| C | &#x2705; | https://github.com/Inateck-Technology-Inc/cpp_sdk |
+## Supported Architectures
+The supported architectures are as follows, and you can find the corresponding library files [here](https://github.com/Inateck-Technology-Inc/scanner_lib).
 
-## Usage
-1. Copy the corresponding `libscanner_ble` library file for your operating system platform to your project.
-2. Run the demo.
+| Architecture | Support |
+| ------- | ------- |
+| aarch64-apple-ios | &#x2705; |
+| aarch64-linux-android | &#x2705; |
+| x86_64-apple-darwin | &#x2705; |
+| aarch64-apple-darwin  | &#x2705; |
+| x86_64-pc-windows-msvc | &#x2705; |
+| i686-pc-windows-msvc | &#x2705; |
+| x86_64-unknown-linux-gnu | &#x2705; |
+| i686-unknown-linux-gnu | &#x2705; |
+| armv7-unknown-linux-gnueabihf | &#x2705; |
+| aarch64-unknown-linux-gnu | &#x2705; |
 
+## SDK
+### [Bluetooth Library (with Bluetooth functionality)](https://docs.inateck.com/scanner-sdk-en/ble/desktop/)
+This library includes Bluetooth search, connection, data transmission, and other functions. Users can use this library to communicate with devices.
 
-## General API  
-
-Initialize the SDK, `callback` is the callback for device connection status.
-
-```python
-registerEvent(`callback`)
-```
-
-<br>
-
-Start scanning devices
-
-```python
-startScan()
-```
-
-<br>
-
-Stop scanning devices
-
-```python
-stopScan()
-```
-
-<br>
-
-Connect the device, `mac` is the unique identifier of the device, `callback` is the callback for scanning content of the connected device. The scanning content is encoded in UTF-8. If the scanning content is not encoded in UTF-8, it needs to be converted manually. For custom encoding, refer to the [documentation](./code.md).
-
-```python
-connect(`mac`, `callback`)
-```
-
-<br>
-
-Disconnect the device, `mac` is the unique identifier of the device.
-
-```python
-disconnect(`mac`)
-```
-
-<br>
-
-Authorize the device, `mac` is the unique identifier of the device. After successful device connection, the device needs to be authorized in order to use it properly.
-```python
-auth(`mac`)
-```
-
-<br>
-Get the battery level, `mac` is the unique identifier of the device.
-
-```python
-getBattery(`mac`)
-```
-
-<br>
-
-Get the firmware version, `mac` is the unique identifier of the device.
-
-```python
-getFirmwareVersion(`mac`)
-```
-
-<br>
-Get the software version, `mac` is the unique identifier of the device.
-
-```python
-getSoftwareVersion(`mac`)
-```
-
-<br>
-Set the device name, `mac` is the unique identifier of the device.
-
-```python
-setName(`mac`, `name`)
-```
-
-<br>
-
-Set the device time, `mac` is the unique identifier of the device.
-
-```python
-setTime(`mac`, `time`)
-```
-
-Reset to factory settings, `mac` is the unique identifier of the device.
-
-```python
-reset(`mac`)
-```
-
-<br>
-
-Restart the device, `mac` is the unique identifier of the device.
-
-```python
-restart(`mac`)
-```
-
-<br>
-
-Inventory mode settings, `mac` is the unique identifier of the device.
-
-```python
-// Clear inventory cache
-inventoryClearCache(`mac`)
-
-// Upload inventory data when connected via USB
-inventoryUploadCache(`mac`)
-
-// Upload the number of inventory cache when connected via USB
-inventoryUploadCacheNumber(`mac`)
-```
-
-<br>
-
-Barcode open settings, `mac` is the unique identifier of the device.
-
-```python
-// Open all barcodes
-openAllCode(`mac`)
-
-// Close all barcodes
-closeAllCode(`mac`)
-
-// Reset all barcodes to factory settings
-resetAllCode(`mac`)
-```
-
-<br>
-
-SDK Version
-
-```python
-sdkVersion()
-```
-
-<br>
-
-## Setting API
-
-Set the configuration information, `mac` is the unique identifier of the device, `cmd` is a JSON string. For specific configuration information, refer to the [documentation](./info.md).
-
-```python
-setSettingInfo(`mac`, `cmd`)
-
-// Example
-// Set the volume of the scanner
-// `cmd` is a JSON string
-setSettingInfo(`mac`, "[{ "value" : "0","area" : "3","name" : "volume" }]")
-```
-
-<br>
-
-
-Get the configuration information, `mac` is the unique identifier of the device.
-
-```python
-getSettingInfo(`mac`)
-```
-
+### [Parsing Library (without Bluetooth functionality)](https://docs.inateck.com/scanner-sdk-en/cmd/desktop/)
+This library includes functions for parsing data returned by devices. Users can use this library to parse data returned by devices. Users need to implement Bluetooth search, connection, data transmission, and other functions themselves.
 
