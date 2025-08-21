@@ -1,5 +1,5 @@
 
-from time import sleep
+import time
 from InateckScannerBle import InateckScannerBle, DeviceType
 
 def scan_callback(mac):
@@ -39,7 +39,15 @@ def loud_mode(inateck, device_id):
     info = inateck.setSettingInfo(device_id, open_volume, DeviceType.ST75)
     inateck.beeOrShake(device_id)
     print("Loud Mode: %s" % (info))
+    
+def set_time(inateck, device_id):
+    # 12:30:00 2025-08-21
+    info = inateck.setTime(device_id, 12, 30, 0, 2025, 8, 21)
+    print("Set Time: %s" % (info))
 
+
+# latest lib version:
+# # https://github.com/Inateck-Technology-Inc/scanner_lib
 
 if __name__ == '__main__':
     inateck = InateckScannerBle()
@@ -52,18 +60,18 @@ if __name__ == '__main__':
 
     inateck.setDiscoverCallback(scan_callback)
     inateck.startScan()
-    sleep(10)
+    time.sleep(10)
     inateck.stopScan()
 
-    device_id = "BluetoothLE#BluetoothLEf4:4e:fc:89:ee:4a-aa:2b:00:03:95:83"
+    device_id = "4cf21387-1ef8-77aa-d689-7171741b43cf"
 
     connect(inateck, device_id)
 
-    sleep(10)
+    time.sleep(10)
 
     inateck.beeOrShake(device_id)
 
-    sleep(5)
+    time.sleep(5)
 
     get_hardware_version(inateck, device_id)
 
@@ -72,12 +80,14 @@ if __name__ == '__main__':
     get_setting_info(inateck, device_id)
 
     quiet_mode(inateck, device_id)
+    
+    set_time(inateck, device_id)
 
-    sleep(5)
+    time.sleep(5)
 
     loud_mode(inateck, device_id)
 
-    sleep(5)
+    time.sleep(5)
 
 
 

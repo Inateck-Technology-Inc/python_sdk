@@ -23,10 +23,16 @@ class DeviceType(Enum):
 
 class InateckScannerBle:
     def __init__(self):
-        if platform.system() == 'Windows':
+        
+        # latest lib version:
+        # https://github.com/Inateck-Technology-Inc/scanner_lib
+        
+        if platform.system() == 'Darwin':
+            self.lib = cdll.LoadLibrary('./libscanner_ble_x86_64-apple-darwin.dylib')
+        elif platform.system() == 'Windows':
             self.lib = cdll.LoadLibrary('./scanner_ble_x86_64-pc-windows-msvc.dll')
         else:
-            print("Unsupported OS")
+            print("find library: https://github.com/Inateck-Technology-Inc/scanner_lib")
 
     def init(self):
         func = self.lib.inateck_scanner_ble_init
@@ -165,12 +171,17 @@ class InateckScannerBle:
         char_ptr = func(deviceId, name)
         return char_ptr.decode('utf-8')
     
-    def setTime(self, deviceId, time):
+    def setTime(self, deviceId, hour, minute, second, year, month, day):
         deviceId = c_char_p(bytes(deviceId, 'utf-8'))
-        time = c_long(time)
+        hour = c_int(time)
+        minute = c_int(time)
+        second = c_int(time)
+        year = c_int(time)
+        month = c_int(time)
+        day = c_int(time)
         func = self.lib.inateck_scanner_ble_set_time
         func.restype = c_char_p
-        char_ptr = func(deviceId, time)
+        char_ptr = func(deviceId, hour, minute, second, year, month, day)
         return char_ptr.decode('utf-8')
     
     def inventoryClearCache(self, deviceId):
@@ -239,3 +250,19 @@ class InateckScannerBle:
         enable = c_int(enable)
         status = self.lib.inateck_scanner_ble_set_debug(enable)
         return status
+    
+    # int inateck_scanner_ble_send_hid_text(const char *text);
+    def sendHidText(self, text):
+        text = c_char_p(bytes(text, 'utf-8'))
+        func = self.lib.inateck_scanner_ble_send_hid_text
+        func.restype = c_char_p
+        char_ptr = func(text)
+        return char_ptr.decode('utf-8')
+    
+    def setHidOutput(self, deviceId, outputType):
+        deviceId = c_char_p(bytes(deviceId, 'utf-8'))
+        outputType = c_int(outputType)
+        func = self.lib.inateck_scanner_ble_set_hid_output
+        func.restype = c_char_p
+        char_ptr = func(deviceId, outputType)
+        return char_ptr.decode('utf-8')
